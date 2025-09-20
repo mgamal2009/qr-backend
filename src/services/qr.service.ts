@@ -9,7 +9,7 @@ class QRService {
 
   constructor() {
     this.currentUUID = uuidv4();
-// refresh every 60 seconds
+    // refresh every 60 seconds
     setInterval(() => this.refresh(), 60_000);
   }
 

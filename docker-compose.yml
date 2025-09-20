@@ -5,26 +5,25 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: expo_app
+      POSTGRES_DB: qr_backend
     volumes:
       - db-data:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
-
+      - "5432:5432"
 
   backend:
     build: .
-    command: sh -c "pnpm prisma:generate && pnpm prisma:migrate && pnpm dev"
+    command: sh -c "pnpm prisma generate && pnpm dev"
     volumes:
       - .:/app
     environment:
-      DATABASE_URL: postgres://postgres:postgres@db:5432/expo_app
+      DATABASE_URL: postgres://postgres:postgres@db:5432/qr_backend
       JWT_SECRET: bfb2b9f78f51c491e37ba23119b15cf8e995811e0419a48bfe6f36b02203e651
       JWT_EXPIRES_IN: 3600s
       PORT: 4000
       FRONTEND_URL: http://localhost:19006
     ports:
-      - '4000:4000'
+      - "4000:4000"
     depends_on:
       - db
 

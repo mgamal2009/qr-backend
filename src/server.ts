@@ -3,11 +3,9 @@ import {createApp} from './app';
 import {Server as IOServer} from 'socket.io';
 import {qrService} from './services/qr.service';
 import dotenv from 'dotenv';
-import {PrismaClient} from '@prisma/client';
 
 
 dotenv.config();
-const prisma = new PrismaClient();
 
 
 const app = createApp();
